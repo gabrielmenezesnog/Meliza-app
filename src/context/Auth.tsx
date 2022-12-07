@@ -22,8 +22,7 @@ export const AuthProvider: React.FC<Props> = ({children}) => {
     const auth = await authService.SignIn(email, password);
 
     if (auth?.status === 200) {
-      console.log(auth);
-      //setAuthData(auth);
+      setAuthData(auth);
     }
     if (auth?.status === 401 || auth?.status === 403) {
       Alert.alert('Email ou senha incorretos');
