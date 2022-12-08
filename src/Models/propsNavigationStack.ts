@@ -4,7 +4,10 @@ export type propsNavigationStack = {
   Home: undefined;
   SignIn: undefined;
   SignUp: undefined;
-  DashBoard: undefined;
+  Patients: undefined;
+  Plans: undefined;
+  Profile: undefined;
+  Consultations: undefined;
   Schedules: undefined;
 };
 
