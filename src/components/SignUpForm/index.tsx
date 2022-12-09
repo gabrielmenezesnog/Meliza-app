@@ -48,19 +48,20 @@ export const SignUpForm = () => {
 
   const inputsValiation = () => {
     const validate = new InputValitation();
-    let status = false;
+    let [nameStatus, emailStatus, passwordStatus, confirmStatus] =
+      Array(6).fill(false);
     if (name !== '') {
-      status = true;
+      nameStatus = true;
     } else {
-      status = false;
+      nameStatus = false;
       setNamePlaceholder('Insira seu nome');
       setNameInputColor('#FF4747');
     }
 
     if (email !== '' && validate.verifyEmail(email)) {
-      status = true;
+      emailStatus = true;
     } else {
-      status = false;
+      emailStatus = false;
       setEmail('');
       setEmailPlaceholder('Insira um email válido');
       setEmailInputColor('#FF4747');
@@ -69,15 +70,15 @@ export const SignUpForm = () => {
     if (password !== '') {
       const passwordCheck = validate.verifyPassword(password);
       if (passwordCheck === true) {
-        status = true;
+        passwordStatus = true;
       } else {
-        status = false;
+        passwordStatus = false;
         setPassword('');
         setPasswordPlaceholder('Senha muito pequena');
         setPasswordInputColor('#FF4747');
       }
     } else {
-      status = false;
+      passwordStatus = false;
       setPassword('');
       setPasswordPlaceholder('Insira uma senha');
       setPasswordInputColor('#FF4747');
@@ -87,15 +88,19 @@ export const SignUpForm = () => {
       passwordConfirm !== '' &&
       validate.confirmPassword(password, passwordConfirm)
     ) {
-      status = true;
+      confirmStatus = true;
     } else {
-      status = false;
+      confirmStatus = false;
       setPasswordConfirm('');
       setConfirmPlaceholder('Senhas não coincidem');
       setConfirmInputColor('#FF4747');
     }
 
-    return status;
+    if (nameStatus && emailStatus && passwordStatus && confirmStatus) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
