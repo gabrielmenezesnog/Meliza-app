@@ -10,7 +10,7 @@ export const Routes = () => {
 
   return (
     <NavigationContainer>
-      {authData ? <AppBottomTab /> : <AuthStack />}
+      {authData ? <AuthStack /> : <AppBottomTab />}
     </NavigationContainer>
   );
 };
